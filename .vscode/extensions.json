@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "EditorConfig.editorconfig",
+    "rebornix.project-snippets"
+  ]
+}

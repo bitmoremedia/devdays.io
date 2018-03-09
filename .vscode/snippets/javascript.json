@@ -1,0 +1,32 @@
+{
+  "DEVDAYS_Styled_Components": {
+    "prefix": "styledcomponents",
+    "body": [
+      "import styled from 'styled-components'",
+      "",
+      "import {",
+      "  primary,",
+      "  textOnPrimary,",
+      "  subtextOnPrimary,",
+      "  subtextOnPrimaryAlt,",
+      "  secondary",
+      "} from '../../module/colors'",
+      "",
+      "export const HeaderIconContainer = styled.a`",
+      "  margin: 20px;",
+      "  cursor: pointer;",
+      "`;",
+      "",
+      "export const HeaderIcon = styled.div`",
+      "  transition: fill 0.25s;",
+      "  width: ${props => (props.smaller ? '41px;' : '48px;')};",
+      "  height: ${props => (props.smaller ? '41px;' : '48px;')};",
+      "  background: $ {subtextOnPrimaryAlt};",
+      "  $ {HeaderIconContainer}:hover & {",
+      "    fill: ${subtextOnPrimary};",
+      "  }",
+      "`;"
+    ],
+    "description": "DEVDAYS Styled Components"
+  }
+}

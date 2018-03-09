@@ -1,0 +1,107 @@
+import { getTimesUntil, getDayPatternToDayIndexes } from './timerCalcs'
+
+describe('getTimesUntil: 2018-03-05 to 2018-03-08 (mon-sun)', () => {
+  const output = getTimesUntil({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    endDate: '2018-03-08',
+    devDayPattern: 'mon-sun',
+  })
+
+  test('days to be 3', () => {
+    expect(output.days).toEqual(3)
+  })
+
+  test('dev days to be 3', () => {
+    expect(output.devDays).toEqual(3)
+  })
+})
+
+describe('getTimesUntil: 2018-03-05 to 2018-03-08 (mon-tue)', () => {
+  const output = getTimesUntil({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    endDate: '2018-03-08',
+    devDayPattern: 'mon-tue',
+  })
+
+  test('days to be 3', () => {
+    expect(output.days).toEqual(3)
+  })
+
+  test('dev days to be 2', () => {
+    expect(output.devDays).toEqual(2)
+  })
+})
+
+describe('getTimesUntil: 2018-03-05 to 2018-03-15 (mon-fri)', () => {
+  const output = getTimesUntil({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    endDate: '2018-03-15',
+    devDayPattern: 'mon-fri',
+  })
+
+  test('days to be 10', () => {
+    expect(output.days).toEqual(10)
+  })
+
+  test('dev days to be 8', () => {
+    expect(output.devDays).toEqual(8)
+  })
+})
+
+describe('dayPatternToDayIndexes', () => {
+  test('mon-fri', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'mon-fri',
+      }),
+    ).toEqual([1, 2, 3, 4, 5])
+  })
+
+  test('sun-sun', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'sun-sun',
+      }),
+    ).toEqual([0])
+  })
+
+  test('mon-sun', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'mon-sun',
+      }),
+    ).toEqual([0, 1, 2, 3, 4, 5, 6])
+  })
+
+  test('tue-sat', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'tue-sat',
+      }),
+    ).toEqual([2, 3, 4, 5, 6])
+  })
+
+  test('invalid-param', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'invalid-param',
+      }),
+    ).toEqual(undefined)
+  })
+
+  test('thu-mon', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'thu-mon',
+      }),
+    ).toEqual(undefined)
+  })
+
+  test('sun-sat', () => {
+    expect(
+      getDayPatternToDayIndexes({
+        devDayPattern: 'sun-sat',
+      }),
+    ).toEqual(undefined)
+  })
+})
