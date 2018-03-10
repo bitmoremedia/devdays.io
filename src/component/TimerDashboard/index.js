@@ -93,7 +93,7 @@ class TimerDashboard extends Component {
             displaySettings={displaySettings}
             onClick={clickInnerContainer}
           >
-            <TimerSettings {...this.props} mode="update" />
+            <TimerSettings {...this.props} mode="update" alwaysShowSubmitButton />
           </TimerSettingsContainerInner>
         </TimerSettingsContainerOuter>
       </Fragment>

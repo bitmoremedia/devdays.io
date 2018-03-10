@@ -85,7 +85,7 @@ class TimerSettings extends Component {
 
   render() {
     const { handleChange } = this
-    const { mode } = this.props
+    const { mode, alwaysShowSubmitButton } = this.props
     const { timerName, endDate, devDayPatternStart, devDayPatternEnd, formValid } = this.state
 
     const submitBtnText = mode === 'update' ? 'Update' : 'Add'
@@ -138,9 +138,11 @@ class TimerSettings extends Component {
               <option value="sun">Sunday</option>
             </FormSelect>
           </FormItem>
-          {formValid && (
+          {(formValid || alwaysShowSubmitButton) && (
             <FormItem>
-              <SubmitButton type="submit">{submitBtnText} Timer</SubmitButton>
+              <SubmitButton type="submit" disabled={!formValid}>
+                {submitBtnText} Timer
+              </SubmitButton>
             </FormItem>
           )}
         </Form>

@@ -6,8 +6,8 @@ class NewTimer extends Component {
   render() {
     return (
       <Container>
-        <Heading>DevDays.io</Heading>
-        <SubHeading>Add new timer</SubHeading>
+        <Heading>devdays.io</Heading>
+        <SubHeading>add new timer</SubHeading>
         <SettingsContainer>
           <TimerSettings {...this.props} />
         </SettingsContainer>

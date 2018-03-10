@@ -1,6 +1,9 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import { rollIn } from 'react-animations'
 
 import { textOnPrimary, subtextOnPrimary } from '../../module/colors'
+
+const animateIn = keyframes`${rollIn}`
 
 export const Container = styled.div`
   display: flex;
@@ -23,4 +26,5 @@ export const SubHeading = styled.h2`
 
 export const SettingsContainer = styled.div`
   margin: auto;
+  animation: 0.8s ${animateIn};
 `

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { textOnPrimary, secondary } from '../../module/colors'
+import { textOnPrimary, secondary, danger } from '../../module/colors'
 
 export const Container = styled.div`
   background: ${secondary};
@@ -51,5 +51,9 @@ export const SubmitButton = styled.button`
   background: ${secondary};
   :hover {
     background: rgba(243, 249, 255, 0.1);
+  }
+  :disabled {
+    border: 1px solid ${danger};
+    cursor: not-allowed;
   }
 `
