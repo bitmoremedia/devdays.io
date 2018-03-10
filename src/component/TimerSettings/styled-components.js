@@ -5,7 +5,6 @@ import { textOnPrimary, secondary } from '../../module/colors'
 export const Container = styled.div`
   background: ${secondary};
   padding: 20px 40px 20px 40px;
-  border-radius: 4px;
   border: 1px ${textOnPrimary} solid;
   width: 500px;
 `
@@ -26,7 +25,6 @@ export const FormItemLabel = styled.label`
 const baseFormElementStyles = css`
   outline: none;
   background: rgba(243, 249, 255, 0.1);
-  border-radius: 4px;
   border: 1px solid rgba(243, 249, 255, 0.2);
   color: rgba(243, 249, 255, 0.9);
 `

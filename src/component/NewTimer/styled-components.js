@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  primary,
-  textOnPrimary,
-  subtextOnPrimary,
-  subtextOnPrimaryAlt,
-  secondary,
-} from '../../module/colors'
+import { textOnPrimary, subtextOnPrimary } from '../../module/colors'
 
 export const Container = styled.div`
   display: flex;
