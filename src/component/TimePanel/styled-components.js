@@ -4,8 +4,12 @@ import { primary, textOnPrimary, subtextOnPrimary } from '../../module/colors'
 
 export const Container = styled.div`
   position: relative;
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
+  @media (min-width: 700px) {
+    height: 180px;
+    width: 180px;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,12 +32,18 @@ export const Container = styled.div`
 `
 
 export const Value = styled.h1`
-  font-size: 2.5em;
+  font-size: 2em;
+  @media (min-width: 700px) {
+    font-size: 2.5em;
+  }
   padding-bottom: 10px;
 `
 
 export const Label = styled.h1`
-  font-size: 2em;
+  font-size: 1.6em;
+  @media (min-width: 700px) {
+    font-size: 2em;
+  }
   padding-top: 10px;
 `
 

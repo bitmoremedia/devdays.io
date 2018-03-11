@@ -4,9 +4,13 @@ import { textOnPrimary, secondary, danger } from '../../module/colors'
 
 export const Container = styled.div`
   background: ${secondary};
-  padding: 20px 40px 20px 40px;
   border: 1px ${textOnPrimary} solid;
-  width: 500px;
+  padding: 10px;
+  margin: 10px;
+  @media (min-width: 700px) {
+    width: 500px;
+    padding: 20px 40px 20px 40px;
+  }
 `
 export const Form = styled.form``
 

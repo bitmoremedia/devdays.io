@@ -18,7 +18,7 @@ export const OutOfTimeContainer = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,16 +35,24 @@ export const HeaderContainer = styled.div`
 `
 
 export const Header = styled.div`
-  padding: 20px;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   max-width: ${maxContentWidth};
+  flex-direction: row;
+  padding: 10px;
+  @media (min-width: 700px) {
+    padding: 20px;
+    flex-direction: row;
+  }
 `
 
 export const TitleContainer = styled.div`
-  min-height: 140px;
+  min-height: 90px;
+  @media (min-width: 700px) {
+    min-height: 140px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,19 +60,28 @@ export const TitleContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 3em;
+  font-size: 2em;
+  @media (min-width: 700px) {
+    font-size: 3em;
+  }
   color: ${textOnPrimary};
   text-transform: uppercase;
 `
 
 export const Date = styled.h2`
-  font-size: 1.3em;
+  font-size: 1em;
+  @media (min-width: 700px) {
+    font-size: 1.3em;
+  }
   color: ${subtextOnPrimary};
   padding-top: 10px;
 `
 
 export const HeaderIconContainer = styled.a`
-  margin: 20px;
+  margin: 10px;
+  @media (min-width: 700px) {
+    margin: 20px;
+  }
   cursor: pointer;
 `
 
