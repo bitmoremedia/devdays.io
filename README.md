@@ -31,3 +31,7 @@ Bookmarkable and shareable development day countdown timer dashboard
 * [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
 * [react-helmet](https://github.com/nfl/react-helmet)
 * [gh-pages](https://github.com/tschaub/gh-pages)
+
+## Notes
+
+* The cache setting for the service-worker.js file (set on Cloudflare) is to expire after 10 minutes

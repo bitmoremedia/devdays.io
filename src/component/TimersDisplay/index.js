@@ -66,11 +66,11 @@ class TimersDisplay extends Component {
     const { years, months, weeks, days, devDays } = this.state
     return (
       <Fragment>
-        <TimePanel label="Dev Days" value={devDays} info={devDayPattern} standout />
-        <TimePanel label="Days" value={days} />
-        {weeks > 1 && <TimePanel label="Weeks" value={weeks} />}
-        {months > 1 && <TimePanel label="Months" value={months} />}
-        {years > 1 && <TimePanel label="Years" value={years} />}
+        <TimePanel label="Dev Day" value={devDays} info={devDayPattern} standout />
+        <TimePanel label="Day" value={days} />
+        {weeks > 1 && <TimePanel label="Week" value={weeks} />}
+        {months > 1 && <TimePanel label="Month" value={months} />}
+        {years > 1 && <TimePanel label="Year" value={years} />}
       </Fragment>
     )
   }

@@ -17,6 +17,7 @@ class TimerSettings extends Component {
     const { value, label, info, standout } = this.props
 
     let valueDisplay = value.toFixed(3).toString()
+    let labelDisplay = label
 
     if (valueDisplay.indexOf('.000') > -1) {
       valueDisplay = valueDisplay.substring(0, valueDisplay.indexOf('.000'))
@@ -47,10 +48,19 @@ class TimerSettings extends Component {
       )
     }
 
+    // pluralise label
+    if (Number(integer) === 1) {
+      if (decimal) {
+        labelDisplay = `${labelDisplay}s`
+      }
+    } else {
+      labelDisplay = `${labelDisplay}s`
+    }
+
     return (
       <Container standout={standout}>
         <Value>{valueDisplayParts}</Value>
-        <Label>{label}</Label>
+        <Label>{labelDisplay}</Label>
         {subLabel}
       </Container>
     )
