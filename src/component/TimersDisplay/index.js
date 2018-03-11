@@ -17,6 +17,7 @@ import {
   TimePanelsContainerStretch,
   TimePanelsContainerOuter,
   TimePanelsContainerInner,
+  TimePanelContainer,
   FooterContainer,
   FooterDateContainer,
 } from './styled-components'
@@ -67,11 +68,27 @@ class TimersDisplay extends Component {
     const { years, months, weeks, days, devDays } = this.state
     return (
       <Fragment>
-        <TimePanel label="Dev Day" value={devDays} info={devDayPattern} standout />
-        <TimePanel label="Day" value={days} />
-        {weeks > 1 && <TimePanel label="Week" value={weeks} />}
-        {months > 1 && <TimePanel label="Month" value={months} />}
-        {years > 1 && <TimePanel label="Year" value={years} />}
+        <TimePanelContainer>
+          <TimePanel label="Dev Day" value={devDays} info={devDayPattern} standout />
+        </TimePanelContainer>
+        <TimePanelContainer>
+          <TimePanel label="Day" value={days} />
+        </TimePanelContainer>
+        {weeks > 1 && (
+          <TimePanelContainer>
+            <TimePanel label="Week" value={weeks} />
+          </TimePanelContainer>
+        )}
+        {months > 1 && (
+          <TimePanelContainer>
+            <TimePanel label="Month" value={months} />
+          </TimePanelContainer>
+        )}
+        {years > 1 && (
+          <TimePanelContainer>
+            <TimePanel label="Year" value={years} />
+          </TimePanelContainer>
+        )}
       </Fragment>
     )
   }
