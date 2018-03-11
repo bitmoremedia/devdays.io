@@ -169,10 +169,14 @@ export const TimePanelsContainerInner = styled.div`
   flex-wrap: wrap;
   max-width: 1200px;
   margin: auto;
+  height: 100%;
 `
 
 export const TimePanelContainer = styled.div`
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const FooterContainer = styled.div`
