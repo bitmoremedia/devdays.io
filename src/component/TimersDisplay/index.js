@@ -4,6 +4,7 @@ import moment from 'moment'
 import { getTimesUntil } from '../../module/timerCalcs'
 import TimePanel from '../TimePanel'
 import {
+  OutOfTimeContainer,
   Container,
   HeaderContainer,
   Header,
@@ -76,7 +77,7 @@ class TimersDisplay extends Component {
   }
 
   renderTimesUp = () => {
-    return <div>Out of time!!!</div>
+    return <OutOfTimeContainer>Out of time!!!</OutOfTimeContainer>
   }
 
   render() {

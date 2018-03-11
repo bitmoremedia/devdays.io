@@ -11,6 +11,11 @@ import {
 
 const maxContentWidth = '1200px'
 
+export const OutOfTimeContainer = styled.div`
+  color: ${textOnPrimary};
+  font-size: 2em;
+`
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
