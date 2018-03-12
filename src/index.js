@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import registerServiceWorker from './registerServiceWorker'
 
-import SceneManager from "./component/SceneManager";
+import SceneManager from './component/SceneManager'
 
-import "./global-styles";
+import './global-styles'
 
-ReactDOM.render(<SceneManager />, document.getElementById("root"));
-registerServiceWorker();
+ReactDOM.render(<SceneManager />, document.getElementById('root'))
+registerServiceWorker()
