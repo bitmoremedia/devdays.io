@@ -3,14 +3,17 @@ import moment from 'moment'
 
 import { getTimesUntil } from '../../module/timerCalcs'
 import TimePanel from '../TimePanel'
+import Footer from '../Footer'
+import {
+  IconContainer,
+  HomeIcon,
+  SettingsIcon,
+} from '../Icons'
 import {
   OutOfTimeContainer,
   Container,
   HeaderContainer,
   Header,
-  HeaderIconContainer,
-  HomeIcon,
-  SettingsIcon,
   TitleContainer,
   Title,
   Date,
@@ -18,8 +21,6 @@ import {
   TimePanelsContainerOuter,
   TimePanelsContainerInner,
   TimePanelContainer,
-  FooterContainer,
-  FooterDateContainer,
 } from './styled-components'
 
 const CHECK_TIMER_INTERVAL = 1000
@@ -103,22 +104,22 @@ class TimersDisplay extends Component {
 
     const dateDisplay = moment(endDate).format(MOMENT_DATE_FORMAT)
 
-    const today = moment().format('ddd Do MMMM YYYY')
+    // const today = moment().format('ddd Do MMMM YYYY')
 
     return (
       <Container>
         <HeaderContainer>
           <Header>
-            <HeaderIconContainer onClick={goToAddTimer}>
+            <IconContainer onClick={goToAddTimer}>
               <HomeIcon />
-            </HeaderIconContainer>
+            </IconContainer>
             <TitleContainer>
               <Title>{timerName}</Title>
               <Date>{dateDisplay}</Date>
             </TitleContainer>
-            <HeaderIconContainer onClick={toggleSettings}>
+            <IconContainer onClick={toggleSettings}>
               <SettingsIcon />
-            </HeaderIconContainer>
+            </IconContainer>
           </Header>
         </HeaderContainer>
         <TimePanelsContainerStretch>
@@ -129,7 +130,16 @@ class TimersDisplay extends Component {
             </TimePanelsContainerInner>
           </TimePanelsContainerOuter>
         </TimePanelsContainerStretch>
-        <FooterContainer>
+        <Footer />
+      </Container>
+    )
+  }
+}
+
+export default TimersDisplay
+
+
+/*
           <div>
             Icons made by{' '}
             <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">
@@ -149,11 +159,4 @@ class TimersDisplay extends Component {
               CC 3.0 BY
             </a>
           </div>
-          <FooterDateContainer>{today}</FooterDateContainer>
-        </FooterContainer>
-      </Container>
-    )
-  }
-}
-
-export default TimersDisplay
+*/
