@@ -1,5 +1,4 @@
 import React, { Component, } from 'react'
-import moment from 'moment'
 
 import {
   IconContainer,
@@ -8,6 +7,8 @@ import {
 import {
   FooterContainer,
   FooterDateContainer,
+  LiveDot,
+  Now,
 } from './styled-components'
 
 // const CHECK_TIMER_INTERVAL = 1000
@@ -17,7 +18,7 @@ class Footer extends Component {
 
   render() {
 
-    const today = moment().format('ddd Do MMMM YYYY')
+    const { now } = this.props
 
     const showInfo = () => {
       console.log('show info')
@@ -25,10 +26,12 @@ class Footer extends Component {
 
     return (
         <FooterContainer>
-          <FooterDateContainer>{today}</FooterDateContainer>          
+          <FooterDateContainer><LiveDot/><Now>{now}</Now></FooterDateContainer>
+          {/*
           <IconContainer onClick={showInfo} smaller>
             <InfoIcon />
           </IconContainer>
+          */}
         </FooterContainer>
     )
   }

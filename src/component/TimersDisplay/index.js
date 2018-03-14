@@ -25,6 +25,7 @@ import {
 
 const CHECK_TIMER_INTERVAL = 1000
 const MOMENT_DATE_FORMAT = 'dddd, MMMM Do YYYY'
+const MOMENT_DATE_TIME_FORMAT = 'ddd Do MMMM YYYY HH:mm'
 
 class TimersDisplay extends Component {
   state = {
@@ -35,13 +36,16 @@ class TimersDisplay extends Component {
     devDays: 0,
     hours: 0,
     minutes: 0,
+    now: undefined,
   }
 
   timer = undefined
 
   calculateTimers = props => {
     const currentProps = props || { ...this.props }
-    this.setState(getTimesUntil({ ...currentProps }))
+    const timesUntil = getTimesUntil({ ...currentProps })
+    const now = moment().format(MOMENT_DATE_TIME_FORMAT)
+    this.setState({ ...timesUntil, now })
   }
 
   applyTimerProps(props) {
@@ -100,11 +104,9 @@ class TimersDisplay extends Component {
 
   render() {
     const { timerName, endDate, toggleSettings, goToAddTimer } = this.props
-    const { days } = this.state
+    const { days, now } = this.state
 
     const dateDisplay = moment(endDate).format(MOMENT_DATE_FORMAT)
-
-    // const today = moment().format('ddd Do MMMM YYYY')
 
     return (
       <Container>
@@ -130,7 +132,7 @@ class TimersDisplay extends Component {
             </TimePanelsContainerInner>
           </TimePanelsContainerOuter>
         </TimePanelsContainerStretch>
-        <Footer />
+        <Footer now={now} />
       </Container>
     )
   }
