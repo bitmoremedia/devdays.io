@@ -14,7 +14,7 @@ import {
 
 class TimerSettings extends Component {
   render() {
-    const { value, label, info, standout } = this.props
+    const { value, label, info, standout, showDecimal } = this.props
 
     let valueDisplay = value.toFixed(3).toString()
     let labelDisplay = label
@@ -41,8 +41,10 @@ class TimerSettings extends Component {
       valueDisplayParts = (
         <Fragment>
           <Integer>{integerDisplay}</Integer>
-          <DecimalPoint>.</DecimalPoint>
-          <Decimal>{decimal}</Decimal>
+          {showDecimal && <Fragment>
+              <DecimalPoint>.</DecimalPoint>
+              <Decimal>{decimal}</Decimal>
+          </Fragment>}
           {subLabel}
         </Fragment>
       )
