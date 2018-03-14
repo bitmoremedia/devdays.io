@@ -17,8 +17,8 @@ export const OutOfTimeContainer = styled.div`
 `
 
 export const Container = styled.div`
-  flex: 1;
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -78,7 +78,7 @@ export const Date = styled.h2`
 `
 
 export const HeaderIconContainer = styled.a`
-  margin: 10px;
+  margin: 5px;
   @media (min-width: 700px) {
     margin: 20px;
   }
@@ -159,6 +159,8 @@ export const TimePanelsContainerOuter = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;  
 `
 
 export const TimePanelsContainerInner = styled.div`
@@ -174,9 +176,13 @@ export const TimePanelsContainerInner = styled.div`
 
 export const TimePanelContainer = styled.div`
   margin: 10px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 700px) {
+    width: inherit;
+  }  
 `
 
 export const FooterContainer = styled.div`
