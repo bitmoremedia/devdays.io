@@ -10,6 +10,7 @@ export const Container = styled.div`
   @media (min-width: 700px) {
     width: 500px;
     padding: 20px 40px 20px 40px;
+    margin: 0;
   }
 `
 export const Form = styled.form``

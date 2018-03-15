@@ -14,8 +14,9 @@ Bookmarkable and shareable development day countdown timer dashboard
 ## Tech Stack
 
 * Create React App (un ejected)
-* Styled Components
-* Hosted on github with custom domain https://devdays.io
+* React App Rewired (to apply webpack overrides without ejecting CRA)
+* Styled Components (with babel-plugin-styled-components for debugging)
+* Hosted on github pages with a custom domain https://devdays.io
 * Cloudflare CDN (to enable https for custom domain)
 * Custom 404.html using [spa-github-pages](https://github.com/rafrex/spa-github-pages) (to enable SPA on github pages)
 * Prettier
@@ -25,7 +26,9 @@ Bookmarkable and shareable development day countdown timer dashboard
 ## Notable Dependencies
 
 * [react-scripts](https://github.com/facebook/create-react-app)
+* [react-app-rewired](https://github.com/timarney/react-app-rewired)
 * [styled-components](https://github.com/styled-components/styled-components)
+* [react-app-rewire-styled-components](https://github.com/withspectrum/react-app-rewire-styled-components)
 * [react-animations](https://github.com/FormidableLabs/react-animations)
 * [moment](https://github.com/moment/moment)
 * [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
@@ -35,3 +38,13 @@ Bookmarkable and shareable development day countdown timer dashboard
 ## Notes
 
 * The cache setting for the service-worker.js file (set on Cloudflare) is to expire after 10 minutes
+
+## Scripts
+
+| Script        | Usage                                            |
+| ------------- | ------------------------------------------------ |
+| start         | run local development environment                |
+| build         | generate production build to public folder       |
+| test          | run e2e tests                                    |
+| format        | run prettier against all files in /src folder    |
+| deploy        | publish current app to github on gh-pages branch |
