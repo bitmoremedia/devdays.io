@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { textOnPrimary, secondary, danger } from '../../module/colors'
 
-export const Container = styled.div`
+export const TimerSettingsContainer = styled.div`
   background: ${secondary};
   border: 1px ${textOnPrimary} solid;
   padding: 10px;

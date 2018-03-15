@@ -5,7 +5,7 @@ import { textOnPrimary, subtextOnPrimary } from '../../module/colors'
 
 const animateIn = keyframes`${rollIn}`
 
-export const Container = styled.div`
+export const NewTimerContainer = styled.div`
   display: flex;
   flex-direction: column;
 `

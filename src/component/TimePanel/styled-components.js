@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { primary, textOnPrimary, subtextOnPrimary } from '../../module/colors'
 
-export const Container = styled.div`
+export const TimePanelContainer = styled.div`
   position: relative;
   height: 160px;
   width: 160px;

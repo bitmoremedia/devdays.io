@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  primary,
-  textOnPrimary,
-  subtextOnPrimary,
-  secondary,
-} from '../../module/colors'
+import { primary, textOnPrimary, subtextOnPrimary, secondary } from '../../module/colors'
 
 const maxContentWidth = '1200px'
 
@@ -14,7 +9,7 @@ export const OutOfTimeContainer = styled.div`
   font-size: 2em;
 `
 
-export const Container = styled.div`
+export const TimersDisplayContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -89,7 +84,7 @@ export const TimePanelsContainerOuter = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 `
 
 export const TimePanelsContainerInner = styled.div`

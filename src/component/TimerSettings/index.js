@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import {
-  Container,
+  TimerSettingsContainer,
   Form,
   FormItem,
   FormItemLabel,
@@ -91,7 +91,7 @@ class TimerSettings extends Component {
     const submitBtnText = mode === 'update' ? 'Update' : 'Add'
 
     return (
-      <Container>
+      <TimerSettingsContainer>
         <Form onSubmit={this.handleSubmit}>
           <FormItem>
             <FormItemLabel>Name</FormItemLabel>
@@ -146,7 +146,7 @@ class TimerSettings extends Component {
             </FormItem>
           )}
         </Form>
-      </Container>
+      </TimerSettingsContainer>
     )
   }
 }

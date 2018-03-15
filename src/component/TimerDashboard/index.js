@@ -4,7 +4,11 @@ import { Helmet } from 'react-helmet'
 import TimersDisplay from '../TimersDisplay'
 import TimerSettings from '../TimerSettings'
 
-import { TimerSettingsContainerOuter, TimerSettingsContainerInner } from './styled-components'
+import {
+  TimerDashboardContainer,
+  TimerSettingsContainerOuter,
+  TimerSettingsContainerInner,
+} from './styled-components'
 
 class TimerDashboard extends Component {
   state = {
@@ -80,7 +84,7 @@ class TimerDashboard extends Component {
     }
 
     return (
-      <Fragment>
+      <TimerDashboardContainer>
         <Helmet>
           <title>{timerName} - Dev Days</title>
         </Helmet>
@@ -96,7 +100,7 @@ class TimerDashboard extends Component {
             <TimerSettings {...this.props} mode="update" alwaysShowSubmitButton />
           </TimerSettingsContainerInner>
         </TimerSettingsContainerOuter>
-      </Fragment>
+      </TimerDashboardContainer>
     )
   }
 }

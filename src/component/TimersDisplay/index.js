@@ -4,14 +4,10 @@ import moment from 'moment'
 import { getTimesUntil } from '../../module/timerCalcs'
 import TimePanel from '../TimePanel'
 import Footer from '../Footer'
-import {
-  IconContainer,
-  HomeIcon,
-  SettingsIcon,
-} from '../Icons'
+import { IconContainer, HomeIcon, SettingsIcon } from '../Icons'
 import {
   OutOfTimeContainer,
-  Container,
+  TimersDisplayContainer,
   HeaderContainer,
   Header,
   TitleContainer,
@@ -109,7 +105,7 @@ class TimersDisplay extends Component {
     const dateDisplay = moment(endDate).format(MOMENT_DATE_FORMAT)
 
     return (
-      <Container>
+      <TimersDisplayContainer>
         <HeaderContainer>
           <Header>
             <IconContainer onClick={goToAddTimer}>
@@ -133,32 +129,9 @@ class TimersDisplay extends Component {
           </TimePanelsContainerOuter>
         </TimePanelsContainerStretch>
         <Footer now={now} />
-      </Container>
+      </TimersDisplayContainer>
     )
   }
 }
 
 export default TimersDisplay
-
-
-/*
-          <div>
-            Icons made by{' '}
-            <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">
-              Smashicons
-            </a>{' '}
-            from{' '}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>{' '}
-            is licensed by{' '}
-            <a
-              href="http://creativecommons.org/licenses/by/3.0/"
-              title="Creative Commons BY 3.0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CC 3.0 BY
-            </a>
-          </div>
-*/

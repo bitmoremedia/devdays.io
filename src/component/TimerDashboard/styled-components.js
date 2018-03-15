@@ -32,6 +32,8 @@ const randomAnimation = () => {
   return animationInList[Math.floor(Math.random() * animationInList.length)]
 }
 
+export const TimerDashboardContainer = styled.div``
+
 export const TimerSettingsContainerOuter = styled.div`
   position: absolute;
   right: 0px;

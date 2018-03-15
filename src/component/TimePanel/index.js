@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 import { numberWithCommas } from '../../module/utils'
 import {
-  Container,
+  TimePanelContainer,
   Label,
   Value,
   Integer,
@@ -12,7 +12,7 @@ import {
   SubLabel,
 } from './styled-components'
 
-class TimerSettings extends Component {
+class TimePanel extends Component {
   render() {
     const { value, label, info, standout, showDecimal } = this.props
 
@@ -60,13 +60,13 @@ class TimerSettings extends Component {
     }
 
     return (
-      <Container standout={standout}>
+      <TimePanelContainer standout={standout}>
         <Value>{valueDisplayParts}</Value>
         <Label>{labelDisplay}</Label>
         {subLabel}
-      </Container>
+      </TimePanelContainer>
     )
   }
 }
 
-export default TimerSettings
+export default TimePanel
