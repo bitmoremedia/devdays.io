@@ -1,6 +1,6 @@
 # devdays.io
 
-Bookmarkable and shareable development day countdown timer dashboard
+Bookmarkable and shareable development day countdown timer
 
 ## Features
 
@@ -41,10 +41,10 @@ Bookmarkable and shareable development day countdown timer dashboard
 
 ## Scripts
 
-| Script        | Usage                                            |
-| ------------- | ------------------------------------------------ |
-| start         | run local development environment                |
-| build         | generate production build to public folder       |
-| test          | run e2e tests                                    |
-| format        | run prettier against all files in /src folder    |
-| deploy        | publish current app to github on gh-pages branch |
+| Script | Usage                                            |
+| ------ | ------------------------------------------------ |
+| start  | run local development environment                |
+| build  | generate production build to public folder       |
+| test   | run e2e tests                                    |
+| format | run prettier against all files in /src folder    |
+| deploy | publish current app to github on gh-pages branch |
