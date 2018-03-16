@@ -29,9 +29,10 @@ export const FormItemLabel = styled.label`
 
 const baseFormElementStyles = css`
   outline: none;
-  background: rgba(243, 249, 255, 0.1);
+  background: ${secondary};
   border: 1px solid rgba(243, 249, 255, 0.2);
   color: rgba(243, 249, 255, 0.9);
+  border-radius: 5px;
 `
 
 export const FormInput = styled.input`
@@ -43,7 +44,11 @@ export const FormInput = styled.input`
 export const FormSelect = styled.select`
   ${baseFormElementStyles} font-size: 1em;
   background: transparent;
-  appearance: menulist;
+  appearance: none;
+  padding: 6px;
+  cursor: pointer;
+  // font-size need to be 16px to stop the iOS zoom!
+  font-size: 16px;
 `
 export const SubmitButton = styled.button`
   ${baseFormElementStyles};
