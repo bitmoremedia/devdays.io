@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import DatePicker from '../DatePicker'
 import {
   TimerSettingsContainer,
   Form,
@@ -19,6 +20,7 @@ class TimerSettings extends Component {
     devDayPatternStart: 'mon',
     devDayPatternEnd: 'fri',
     formValid: false,
+    endDateFocused: false,
   }
 
   applyTimerProps = ({ timerName, endDate, devDayPattern }) => {
@@ -65,6 +67,24 @@ class TimerSettings extends Component {
     this.setState({ formValid })
   }
 
+  onEndDateChange = endDate => {
+    this.setState(
+      {
+        endDate: endDate,
+      },
+      this.validateForm,
+    )
+  }
+
+  onEndDateFocusChange = ({ focused }) => {
+    this.setState(
+      {
+        endDateFocused: focused,
+      },
+      this.validateForm,
+    )
+  }
+
   handleChange = e => {
     this.setState(
       {
@@ -84,9 +104,16 @@ class TimerSettings extends Component {
   }
 
   render() {
-    const { handleChange } = this
+    const { handleChange, onEndDateChange, onEndDateFocusChange } = this
     const { mode, alwaysShowSubmitButton } = this.props
-    const { timerName, endDate, devDayPatternStart, devDayPatternEnd, formValid } = this.state
+    const {
+      timerName,
+      endDate,
+      devDayPatternStart,
+      devDayPatternEnd,
+      formValid,
+      endDateFocused,
+    } = this.state
 
     const submitBtnText = mode === 'update' ? 'Update' : 'Add'
 
@@ -100,12 +127,11 @@ class TimerSettings extends Component {
 
           <FormItem>
             <FormItemLabel>End Date</FormItemLabel>
-            <FormInput
-              type="date"
-              name="endDate"
-              small={true}
-              onChange={handleChange}
-              value={endDate}
+            <DatePicker
+              date={endDate}
+              onDateChange={onEndDateChange}
+              focused={endDateFocused}
+              onFocusChange={onEndDateFocusChange}
             />
           </FormItem>
 
