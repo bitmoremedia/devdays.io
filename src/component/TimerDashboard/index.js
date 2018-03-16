@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 
+import Body from '../Body'
 import TimersDisplay from '../TimersDisplay'
 import TimerSettings from '../TimerSettings'
 
@@ -83,24 +84,31 @@ class TimerDashboard extends Component {
       ...this.props,
     }
 
+    const bodyStyle = {
+      overflow: displaySettings ? 'hidden' : 'inherit',
+      position: displaySettings ? 'fixed' : 'inherit',
+    }
+
     return (
-      <TimerDashboardContainer>
-        <Helmet>
-          <title>{timerName} - Dev Days</title>
-        </Helmet>
-        <TimersDisplay {...props} toggleSettings={toggleSettings} />
-        <TimerSettingsContainerOuter
-          displaySettings={displaySettings}
-          onClick={clickOuterContainer}
-        >
-          <TimerSettingsContainerInner
+      <Body style={bodyStyle}>
+        <TimerDashboardContainer>
+          <Helmet>
+            <title>{timerName} - Dev Days</title>
+          </Helmet>
+          <TimersDisplay {...props} toggleSettings={toggleSettings} />
+          <TimerSettingsContainerOuter
             displaySettings={displaySettings}
-            onClick={clickInnerContainer}
+            onClick={clickOuterContainer}
           >
-            <TimerSettings {...this.props} mode="update" alwaysShowSubmitButton />
-          </TimerSettingsContainerInner>
-        </TimerSettingsContainerOuter>
-      </TimerDashboardContainer>
+            <TimerSettingsContainerInner
+              displaySettings={displaySettings}
+              onClick={clickInnerContainer}
+            >
+              <TimerSettings {...this.props} mode="update" alwaysShowSubmitButton />
+            </TimerSettingsContainerInner>
+          </TimerSettingsContainerOuter>
+        </TimerDashboardContainer>
+      </Body>
     )
   }
 }
