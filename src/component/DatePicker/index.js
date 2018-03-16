@@ -3,6 +3,14 @@ import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
+import { injectGlobal } from 'styled-components'
+
+// hack in custom styles to center align the calendar day number
+injectGlobal`
+  .CalendarDay {
+    vertical-align: middle;
+  }
+`
 
 class DatePicker extends Component {
   state = {
