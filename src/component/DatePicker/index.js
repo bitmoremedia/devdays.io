@@ -46,6 +46,8 @@ class DatePicker extends Component {
         numberOfMonths={1}
         hideKeyboardShortcutsPanel
         readOnly={readOnly}
+        displayFormat="DD/MM/YYYY"
+        daySize={35}
       />
     )
   }
