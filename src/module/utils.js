@@ -25,3 +25,16 @@ export const isValidDateString = ({ dateString }) => {
   // FINALLY: we do a moment JS validation check
   return moment(dateString).isValid()
 }
+
+export const getLocaleDateFormat = () => {
+  // slightly hacky... we want to show either DD/MM/YYYY or MM/DD/YYYY
+  let dateDisplayFormat = 'MM/DD/YYYY'
+  try {
+    const localDateString = new Date('1980-03-26').toLocaleDateString()
+    const dateParts = localDateString.split('/')
+    if (dateParts[0] === '26') {
+      dateDisplayFormat = 'DD/MM/YYYY'
+    }
+  } catch (e) {}
+  return dateDisplayFormat
+}

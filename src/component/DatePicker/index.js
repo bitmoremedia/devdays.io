@@ -5,12 +5,27 @@ import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 import { injectGlobal } from 'styled-components'
 
+import { getLocaleDateFormat } from '../../module/utils'
+
 // hack in custom styles to center align the calendar day number
 injectGlobal`
   .CalendarDay {
     vertical-align: middle;
   }
+  .DateInput {
+    width: 110px;
+  }
+  .DateInput_input {
+    font-size: 16px;
+    line-height: 16px;
+    padding: 6px 6px 6px 10px;    
+  }
+  .DateInput_input__focused {
+    border-bottom: 2px solid transparent;
+}  
 `
+
+const displayFormat = getLocaleDateFormat()
 
 class DatePicker extends Component {
   state = {
@@ -54,7 +69,7 @@ class DatePicker extends Component {
         numberOfMonths={1}
         hideKeyboardShortcutsPanel
         readOnly={readOnly}
-        displayFormat="DD/MM/YYYY"
+        displayFormat={displayFormat}
         daySize={35}
       />
     )
