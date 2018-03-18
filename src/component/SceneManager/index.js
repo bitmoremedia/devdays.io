@@ -56,8 +56,15 @@ const Scene = ({ match, history }) => {
     } else if (timerName && !validDevDayPattern) {
       history.push(`/${timerName}/${endDate}`)
     } else {
+      const { devDayPattern, endDate, timerName } = match.params
       ActiveScene = (
-        <TimerDashboard {...match.params} goToTimer={goToTimer} goToAddTimer={goToAddTimer} />
+        <TimerDashboard
+          devDayPattern={devDayPattern}
+          endDate={endDate}
+          timerName={timerName}
+          goToTimer={goToTimer}
+          goToAddTimer={goToAddTimer}
+        />
       )
       activeSceneName = 'TimerDashboard'
     }
