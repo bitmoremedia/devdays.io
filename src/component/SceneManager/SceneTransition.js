@@ -55,6 +55,14 @@ class SceneTransition extends Component {
           transitioning: false,
         })
       }, TRANSITION_TIME)
+    } else {
+      // the scene hasn't changed so pass through the update to the current scene
+      this.setState({
+        scenes: {
+          ...this.state.scenes,
+          [inView]: nextScene,
+        },
+      })
     }
   }
 
