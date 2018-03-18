@@ -7,7 +7,7 @@ class NewTimer extends Component {
     return (
       <NewTimerContainer>
         <Heading>devdays.io</Heading>
-        <SubHeading>add new timer</SubHeading>
+        <SubHeading>New Timer</SubHeading>
         <SettingsContainer>
           <TimerSettings {...this.props} />
         </SettingsContainer>

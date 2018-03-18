@@ -115,7 +115,7 @@ class TimerSettings extends Component {
       endDateFocused,
     } = this.state
 
-    const submitBtnText = mode === 'update' ? 'Update' : 'Add'
+    const submitBtnText = mode === 'update' ? 'Update' : 'View'
 
     return (
       <TimerSettingsContainer>
