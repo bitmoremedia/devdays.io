@@ -1,7 +1,7 @@
 import { injectGlobal } from 'styled-components'
 
 import { resetCSS } from './module/reset-css'
-import { primary } from './module/colors'
+import { appBackground } from './module/colors'
 
 injectGlobal`
   ${resetCSS}
@@ -13,7 +13,7 @@ injectGlobal`
   }  
   body {
     font-family: monospace;
-    background: ${primary};
+    background: ${appBackground};
   }
   #root {
     width: 100%;

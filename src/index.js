@@ -8,7 +8,7 @@ import SceneManager from './component/SceneManager'
 import './global-styles'
 
 ReactDOM.render(
-  <Body>
+  <Body style={{}}>
     <SceneManager />
   </Body>,
   document.getElementById('root'),

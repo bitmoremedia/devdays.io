@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { getDayPatternToDayIndexes } from '../../module/timerCalcs'
 import { isValidDateString } from '../../module/utils'
 
+import SceneTransition from './SceneTransition'
 import TimerDashboard from '../TimerDashboard'
 import NewTimer from '../NewTimer'
 
@@ -30,31 +31,38 @@ const Scene = ({ match, history }) => {
     history.push(`/`)
   }
   const { timerName, endDate, devDayPattern } = match.params
+  let ActiveScene = null
+  let activeSceneName
+  let validDevDayPattern = true
+  let validEndDate = true
   // no timer name param, this is effectively the root of the site
   if (!timerName) {
-    return <NewTimer goToTimer={goToTimer} />
+    ActiveScene = <NewTimer goToTimer={goToTimer} />
+    activeSceneName = 'NewTimer'
+  } else {
+    // only pass valid endDate and devDayPattern params
+    if (devDayPattern) {
+      validDevDayPattern = getDayPatternToDayIndexes({
+        devDayPattern,
+      })
+    }
+    if (endDate) {
+      validEndDate = isValidDateString({
+        dateString: endDate,
+      })
+    }
+    if (timerName && !validEndDate) {
+      history.push(`/${timerName}`)
+    } else if (timerName && !validDevDayPattern) {
+      history.push(`/${timerName}/${endDate}`)
+    } else {
+      ActiveScene = (
+        <TimerDashboard {...match.params} goToTimer={goToTimer} goToAddTimer={goToAddTimer} />
+      )
+      activeSceneName = 'TimerDashboard'
+    }
   }
-  // only pass valid endDate and devDayPattern params
-  let validDevDayPattern = true
-  if (devDayPattern) {
-    validDevDayPattern = getDayPatternToDayIndexes({
-      devDayPattern,
-    })
-  }
-  let validEndDate = true
-  if (endDate) {
-    validEndDate = isValidDateString({
-      dateString: endDate,
-    })
-  }
-  if (timerName && !validEndDate) {
-    history.push(`/${timerName}`)
-    return null
-  } else if (timerName && !validDevDayPattern) {
-    history.push(`/${timerName}/${endDate}`)
-    return null
-  }
-  return <TimerDashboard {...match.params} goToTimer={goToTimer} goToAddTimer={goToAddTimer} />
+  return <SceneTransition activeScene={ActiveScene} activeSceneName={activeSceneName} />
 }
 
 export default SceneManager
