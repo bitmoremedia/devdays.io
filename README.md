@@ -31,6 +31,7 @@ Bookmarkable and shareable development day countdown timer
 * [react-app-rewire-styled-components](https://github.com/withspectrum/react-app-rewire-styled-components)
 * [react-animations](https://github.com/FormidableLabs/react-animations)
 * [moment](https://github.com/moment/moment)
+* [react-dates (airbnb date picker)](https://github.com/airbnb/react-dates)
 * [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
 * [react-helmet](https://github.com/nfl/react-helmet)
 * [gh-pages](https://github.com/tschaub/gh-pages)
