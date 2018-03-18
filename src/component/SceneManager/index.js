@@ -8,6 +8,8 @@ import SceneTransition from './SceneTransition'
 import TimerDashboard from '../TimerDashboard'
 import NewTimer from '../NewTimer'
 
+let firstPageLoad = true
+
 const SceneManager = () => (
   <BrowserRouter>
     <Switch>
@@ -35,9 +37,13 @@ const Scene = ({ match, history }) => {
   let activeSceneName
   let validDevDayPattern = true
   let validEndDate = true
+  let goBack
   // no timer name param, this is effectively the root of the site
   if (!timerName) {
-    ActiveScene = <NewTimer goToTimer={goToTimer} />
+    if (!firstPageLoad) {
+      goBack = history.goBack
+    }
+    ActiveScene = <NewTimer goToTimer={goToTimer} goBack={goBack} />
     activeSceneName = 'NewTimer'
   } else {
     // only pass valid endDate and devDayPattern params
@@ -56,7 +62,6 @@ const Scene = ({ match, history }) => {
     } else if (timerName && !validDevDayPattern) {
       history.push(`/${timerName}/${endDate}`)
     } else {
-      const { devDayPattern, endDate, timerName } = match.params
       ActiveScene = (
         <TimerDashboard
           devDayPattern={devDayPattern}
@@ -69,6 +74,7 @@ const Scene = ({ match, history }) => {
       activeSceneName = 'TimerDashboard'
     }
   }
+  firstPageLoad = false
   return <SceneTransition activeScene={ActiveScene} activeSceneName={activeSceneName} />
 }
 

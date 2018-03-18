@@ -1,6 +1,15 @@
 import moment from 'moment'
 
 export const getTimesUntil = ({ currentDateTime, endDate, devDayPattern, numDevelopers }) => {
+  const times = {
+    years: 0,
+    months: 0,
+    weeks: 0,
+    days: 0,
+    devDays: 0,
+    hours: 0,
+    minutes: 0,
+  }
   const thisDateTime = currentDateTime || new Date().getTime()
   const currentMoment = moment(thisDateTime)
     .hours(0)
@@ -11,16 +20,6 @@ export const getTimesUntil = ({ currentDateTime, endDate, devDayPattern, numDeve
 
   const timerMoment = moment(endDate)
   const devDayIndexes = getDayPatternToDayIndexes({ devDayPattern })
-
-  const times = {
-    years: 0,
-    months: 0,
-    weeks: 0,
-    days: 0,
-    devDays: 0,
-    hours: 0,
-    minutes: 0,
-  }
 
   times.years = timerMoment.diff(currentMoment, 'years', true)
   times.months = timerMoment.diff(currentMoment, 'months', true)
@@ -43,6 +42,9 @@ export const getTimesUntil = ({ currentDateTime, endDate, devDayPattern, numDeve
 }
 
 export const getDayPatternToDayIndexes = ({ devDayPattern }) => {
+  if (!devDayPattern) {
+    return undefined
+  }
   const dayParts = devDayPattern.split('-')
   const startDay = dayParts[0]
   const endDay = dayParts[1]

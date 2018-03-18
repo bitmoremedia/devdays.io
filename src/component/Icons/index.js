@@ -1,23 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {
-  subtextOnPrimary,
-  subtextOnPrimaryAlt,
-} from '../../module/colors'
+import { subtextOnPrimary, subtextOnPrimaryAlt } from '../../module/colors'
 
 export const IconContainer = styled.a`
   margin: 5px;
+  cursor: pointer;
   @media (min-width: 700px) {
     margin: 20px;
   }
-  cursor: pointer;
 `
 
 const Icon = styled.svg`
   transition: fill 0.25s;
-  width: ${props => (props.small ? '41px;' : (props.tiny) ? '30px' : '48px' )};
-  height: ${props => (props.small ? '41px;' : (props.tiny) ? '30px' : '48px' )};
+  width: ${props => (props.small ? '41px;' : props.tiny ? '30px' : '48px')};
+  height: ${props => (props.small ? '41px;' : props.tiny ? '30px' : '48px')};
   fill: ${subtextOnPrimaryAlt};
   ${IconContainer}:hover & {
     fill: ${subtextOnPrimary};
@@ -77,11 +74,23 @@ c-1.93,0-3.5-1.57-3.5-3.5s1.57-3.5,3.5-3.5s3.5,1.57,3.5,3.5S29.43,31,27.5,31z"
 
 export const InfoIcon = () => (
   <Icon viewBox="0 0 52 52" tiny>
-    <path d="M26,0C11.663,0,0,11.663,0,26s11.663,26,26,26s26-11.663,26-26S40.337,0,26,0z M28,41c0,1.104-0.896,2-2,2s-2-0.896-2-2v-2
+    <path
+      d="M26,0C11.663,0,0,11.663,0,26s11.663,26,26,26s26-11.663,26-26S40.337,0,26,0z M28,41c0,1.104-0.896,2-2,2s-2-0.896-2-2v-2
 	  c0-1.104,0.896-2,2-2s2,0.896,2,2V41z M30.874,24.567C29.102,25.711,28,27.853,28,30.158V33c0,1.104-0.896,2-2,2s-2-0.896-2-2
 	  v-2.842c0-3.706,1.76-7.053,4.706-8.952c1.46-0.942,2.317-2.541,2.293-4.277c-0.036-2.635-2.293-4.892-4.928-4.928
 	  c-1.366-0.067-2.622,0.492-3.582,1.438C21.529,14.387,21,15.651,21,17c0,1.104-0.896,2-2,2s-2-0.896-2-2
 	  c0-2.428,0.952-4.703,2.681-6.408C21.378,8.918,23.617,8,25.998,8c0.043,0,0.086,0.001,0.13,0.001
-	  c4.824,0.067,8.804,4.047,8.871,8.871C35.043,19.996,33.501,22.873,30.874,24.567z"/>
+	  c4.824,0.067,8.804,4.047,8.871,8.871C35.043,19.996,33.501,22.873,30.874,24.567z"
+    />
+  </Icon>
+)
+
+export const BackIcon = () => (
+  <Icon viewBox="0 0 49.656 49.656" tiny>
+    <polygon points="14.535,48.242 11.707,45.414 32.292,24.828 11.707,4.242 14.535,1.414 37.949,24.828 	" />
+    <path
+      d="M14.535,49.656l-4.242-4.242l20.585-20.586L10.293,4.242L14.535,0l24.829,24.828L14.535,49.656z
+		 M13.121,45.414l1.414,1.414l22-22l-22-22l-1.414,1.414l20.585,20.586L13.121,45.414z"
+    />
   </Icon>
 )

@@ -80,8 +80,8 @@ class TimerDashboard extends Component {
 
     // set defaults for missing props
     const props = {
-      devDayPattern: 'mon-fri',
       ...this.props,
+      devDayPattern: this.props.devDayPattern || 'mon-fri',
     }
 
     const bodyStyle = {
