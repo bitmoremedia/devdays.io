@@ -16,11 +16,11 @@ class TimePanel extends Component {
   render() {
     const { value, label, info, standout, showDecimal } = this.props
 
-    let valueDisplay = value.toFixed(3).toString()
+    let valueDisplay = value.toFixed(1).toString()
     let labelDisplay = label
 
-    if (valueDisplay.indexOf('.000') > -1) {
-      valueDisplay = valueDisplay.substring(0, valueDisplay.indexOf('.000'))
+    if (valueDisplay.indexOf('.0') > -1) {
+      valueDisplay = valueDisplay.substring(0, valueDisplay.indexOf('.0'))
     }
 
     const numberParts = valueDisplay.split('.')

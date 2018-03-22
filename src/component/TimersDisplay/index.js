@@ -77,17 +77,17 @@ class TimersDisplay extends Component {
         </TimePanelContainer>
         {weeks > 1 && (
           <TimePanelContainer>
-            <TimePanel label="Week" value={weeks} />
+            <TimePanel label="Week" value={weeks} showDecimal />
           </TimePanelContainer>
         )}
         {months > 1 && (
           <TimePanelContainer>
-            <TimePanel label="Month" value={months} />
+            <TimePanel label="Month" value={months} showDecimal />
           </TimePanelContainer>
         )}
         {years > 1 && (
           <TimePanelContainer>
-            <TimePanel label="Year" value={years} />
+            <TimePanel label="Year" value={years} showDecimal />
           </TimePanelContainer>
         )}
       </Fragment>
