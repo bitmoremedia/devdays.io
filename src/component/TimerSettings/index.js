@@ -13,7 +13,7 @@ import {
   SubmitButton,
   DayInput,
 } from './styled-components'
-import { getDayPatternToDayIndexes } from '../../module/timerCalcs'
+import { getDayPatternToDayIndexes, getTimesUntil, getEndDateFromDevDays, } from '../../module/timerCalcs'
 import { isValidDateString } from '../../module/utils'
 
 class TimerSettings extends Component {
@@ -52,7 +52,8 @@ class TimerSettings extends Component {
 
   validateForm = () => {
     let formValid = true
-    const { timerName, endDate, devDayPatternStart, devDayPatternEnd } = this.state
+    const { timerName, endDate, devDays, devDayType, devDayPatternStart, devDayPatternEnd } = this.state
+    const devDayPattern = `${devDayPatternStart}-${devDayPatternEnd}`
     // ensure we have name and date values
     if (!timerName || !endDate) {
       formValid = false
@@ -62,14 +63,29 @@ class TimerSettings extends Component {
       formValid = false
     }
     // ensure the devDayPattern is valid
-    if (formValid) {
-      const devDayPattern = `${devDayPatternStart}-${devDayPatternEnd}`
+    if (formValid) {      
       const indexes = getDayPatternToDayIndexes({ devDayPattern })
       if (!indexes) {
         formValid = false
       }
     }
-    this.setState({ formValid })
+    // update the date / dev days field based on which type has been set
+    let newEndDate = endDate
+    let newDevDays = devDays
+    if (devDayType === 'type-date'){
+      if (endDate){
+        newDevDays = getTimesUntil({ endDate, devDayPattern }).devDays
+      }
+    } else if (devDayType === 'type-days') {
+      if (devDays){
+        newEndDate = getEndDateFromDevDays({ devDays, devDayPattern })
+      }
+    }
+    this.setState({ 
+      endDate: newEndDate,
+      devDays: newDevDays,
+      formValid
+     })
   }
 
   onEndDateChange = endDate => {
