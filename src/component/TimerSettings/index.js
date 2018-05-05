@@ -54,12 +54,19 @@ class TimerSettings extends Component {
     let formValid = true
     const { timerName, endDate, devDays, devDayType, devDayPatternStart, devDayPatternEnd } = this.state
     const devDayPattern = `${devDayPatternStart}-${devDayPatternEnd}`
-    // ensure we have name and date values
-    if (!timerName || !endDate) {
+    // ensure we have a name
+    if (!timerName) {
       formValid = false
     }
-    // ensure the date value is a valid date
-    if (formValid && !isValidDateString({ dateString: endDate })) {
+    // ensure we have a date / devDays field based on type
+    if (devDayType === 'type-days' && devDays < 1){
+      formValid = false
+    }
+    if (devDayType === 'type-date' && !endDate){
+      formValid = false
+    }
+    // ensure any end date value is a valid date
+    if (formValid && endDate && !isValidDateString({ dateString: endDate })) {
       formValid = false
     }
     // ensure the devDayPattern is valid
@@ -69,7 +76,8 @@ class TimerSettings extends Component {
         formValid = false
       }
     }
-    // update the date / dev days field based on which type has been set
+    // update the corresponding date / dev days field based on which type has been set
+    // to keep the two in sync
     let newEndDate = endDate
     let newDevDays = devDays
     if (formValid) {
@@ -83,6 +91,10 @@ class TimerSettings extends Component {
         }
       }
     }
+    // ensure dev days is a positive number 
+    if (devDays < 0){
+      formValid = false
+    }    
     this.setState({ 
       endDate: newEndDate,
       devDays: newDevDays,
