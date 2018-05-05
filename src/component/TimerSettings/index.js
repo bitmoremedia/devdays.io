@@ -7,8 +7,11 @@ import {
   FormItem,
   FormItemLabel,
   FormInput,
+  FormRadio,
   FormSelect,
+  RadioOptions,
   SubmitButton,
+  DayInput,
 } from './styled-components'
 import { getDayPatternToDayIndexes } from '../../module/timerCalcs'
 import { isValidDateString } from '../../module/utils'
@@ -17,6 +20,8 @@ class TimerSettings extends Component {
   state = {
     timerName: '',
     endDate: '',
+    devDays: '',
+    devDayType: 'type-date',
     devDayPatternStart: 'mon',
     devDayPatternEnd: 'fri',
     formValid: false,
@@ -94,6 +99,15 @@ class TimerSettings extends Component {
     )
   }
 
+  handleTypeChange = e => {
+    this.setState(
+      {
+        devDayType: e.target.value,
+      },
+      this.validateForm,
+    )
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { timerName, endDate, devDayPatternStart, devDayPatternEnd, formValid } = this.state
@@ -104,18 +118,23 @@ class TimerSettings extends Component {
   }
 
   render() {
-    const { handleChange, onEndDateChange, onEndDateFocusChange } = this
+    const { handleChange, onEndDateChange, onEndDateFocusChange, handleTypeChange } = this
     const { mode, alwaysShowSubmitButton } = this.props
     const {
       timerName,
       endDate,
+      devDays,
       devDayPatternStart,
       devDayPatternEnd,
       formValid,
       endDateFocused,
+      devDayType,
     } = this.state
 
     const submitBtnText = mode === 'update' ? 'Update' : 'View'
+
+    const typeDate = !!(devDayType === 'type-date')
+    const typeDays = !!(devDayType === 'type-days')
 
     return (
       <TimerSettingsContainer>
@@ -125,14 +144,24 @@ class TimerSettings extends Component {
             <FormInput name="timerName" onChange={handleChange} value={timerName} />
           </FormItem>
 
-          <FormItem>
-            <FormItemLabel>End Date</FormItemLabel>
-            <DatePicker
-              date={endDate}
-              onDateChange={onEndDateChange}
-              focused={endDateFocused}
-              onFocusChange={onEndDateFocusChange}
-            />
+          <FormItem noRightPad>
+            
+          { devDayType === 'type-date' &&
+              <DatePicker
+                date={endDate}
+                onDateChange={onEndDateChange}
+                focused={endDateFocused}
+                onFocusChange={onEndDateFocusChange}
+              />
+            }
+            { devDayType === 'type-days' &&
+              <DayInput placeholder="Days" type="number" name="devDays" onChange={handleChange} value={devDays} />
+            }         
+                
+            <RadioOptions>
+              <FormRadio onChange={handleTypeChange} checked={typeDate} type="radio" name="type-date" value="type-date" label="End Date" />
+              <FormRadio onChange={handleTypeChange} checked={typeDays} type="radio" name="type-days" value="type-days" label="Dev Days" />
+            </RadioOptions>
           </FormItem>
 
           <FormItem>
@@ -164,6 +193,7 @@ class TimerSettings extends Component {
               <option value="sun">Sunday</option>
             </FormSelect>
           </FormItem>
+
           {(formValid || alwaysShowSubmitButton) && (
             <FormItem>
               <SubmitButton type="submit" disabled={!formValid}>

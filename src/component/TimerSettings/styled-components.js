@@ -1,3 +1,4 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { textOnPrimary, secondary, danger } from '../../module/colors'
@@ -5,7 +6,7 @@ import { textOnPrimary, secondary, danger } from '../../module/colors'
 export const TimerSettingsContainer = styled.div`
   background: ${secondary};
   border: 1px ${textOnPrimary} solid;
-  padding: 10px;
+  padding: 5px;
   margin: 10px;
   @media (min-width: 700px) {
     width: 500px;
@@ -19,6 +20,7 @@ export const FormItem = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
+  padding-right: ${props => props.noRightPad ? '0' : '10px'};
 `
 
 export const FormItemLabel = styled.label`
@@ -39,6 +41,59 @@ export const FormInput = styled.input`
   ${baseFormElementStyles} padding: 6px 10px;
   width: ${props => (props.small ? '155px;' : '100%;')};
   font-size: 1em;
+`
+
+export const DayInput = styled.input`
+  border: 1px solid #dbdbdb;
+  width: 112px;
+  font-weight: 200;
+  color: #565a5c;
+  background-color: #fff;
+  border: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid transparent;
+  border-left: 0;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 7px 6px 7px 11px;
+  outline: none;
+`
+
+const RadioInput = styled.input`
+  font-size: 1em;
+  cursor: pointer;
+`
+
+const RadioOption = styled.div`
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+`
+
+const RadioLabel = styled.label`
+  color: ${textOnPrimary};
+  cursor: pointer;
+  display: block;
+  @media (min-width: 700px) {
+    display: inline-block;
+    padding-left: 3px;
+  }
+`
+
+export const FormRadio = ({ type, name, value, label, onChange, checked }) => (
+  <RadioOption>
+      <RadioInput id={name} type={type} name={name} value={value} onChange={onChange} checked={checked} />
+      <RadioLabel htmlFor={name}>{label}</RadioLabel>
+  </RadioOption>
+)
+
+export const RadioOptions = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding-left: 5px;
+  padding-right: 5px;
 `
 
 export const FormSelect = styled.select`
