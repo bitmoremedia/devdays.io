@@ -72,13 +72,15 @@ class TimerSettings extends Component {
     // update the date / dev days field based on which type has been set
     let newEndDate = endDate
     let newDevDays = devDays
-    if (devDayType === 'type-date'){
-      if (endDate){
-        newDevDays = getTimesUntil({ endDate, devDayPattern }).devDays
-      }
-    } else if (devDayType === 'type-days') {
-      if (devDays){
-        newEndDate = getEndDateFromDevDays({ devDays, devDayPattern })
+    if (formValid) {
+      if (devDayType === 'type-date'){
+        if (endDate){
+          newDevDays = getTimesUntil({ endDate, devDayPattern }).devDays
+        }
+      } else if (devDayType === 'type-days') {
+        if (devDays){
+          newEndDate = getEndDateFromDevDays({ devDays, devDayPattern })
+        }
       }
     }
     this.setState({ 

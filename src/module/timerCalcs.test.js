@@ -106,7 +106,7 @@ describe('dayPatternToDayIndexes', () => {
   })
 })
 
-describe('getEndDateFromDevDays: 2018-03-05 with devDays 3 (mon-sun)', () => {  
+describe('getEndDateFromDevDays: 2018-03-05 with devDays 3 (mon-sun)', () => {
   const endDate = getEndDateFromDevDays({
     currentDateTime: new Date('2018-03-05').getTime(),
     devDays: 3,

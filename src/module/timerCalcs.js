@@ -1,7 +1,6 @@
 import moment from 'moment'
 
 export const getEndDateFromDevDays = ({ currentDateTime, devDays, devDayPattern }) => {
-
   const thisDateTime = currentDateTime || new Date().getTime()
   const currentMoment = moment(thisDateTime)
     .hours(0)
