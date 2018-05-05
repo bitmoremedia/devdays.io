@@ -1,6 +1,33 @@
 import moment from 'moment'
 
-export const getTimesUntil = ({ currentDateTime, endDate, devDayPattern, numDevelopers }) => {
+export const getEndDateFromDevDays = ({ currentDateTime, devDays, devDayPattern }) => {
+
+  const thisDateTime = currentDateTime || new Date().getTime()
+  const currentMoment = moment(thisDateTime)
+    .hours(0)
+    .minutes(0)
+    .seconds(0)
+    .milliseconds(0)
+  const devDayIndexes = getDayPatternToDayIndexes({ devDayPattern })
+  let dayIndex = currentMoment.day()
+  let devDayCounter = 0
+  let dayCounter = 0
+  // loop through each day until our dev days are all used up
+  while (devDays > devDayCounter) {
+    if (devDayIndexes.indexOf(dayIndex) > -1) {
+      // this day is a dev day so increment the dev day count
+      devDayCounter += 1
+    }
+    // apply next day index logic
+    dayIndex = dayIndex === 6 ? 0 : dayIndex + 1
+    // increment the generic day counter
+    dayCounter += 1
+  }
+  // all dev days are used up so return the new date
+  return currentMoment.add(dayCounter, 'days').format('YYYY-MM-DD')
+}
+
+export const getTimesUntil = ({ currentDateTime, endDate, devDayPattern }) => {
   const times = {
     years: 0,
     months: 0,

@@ -159,7 +159,7 @@ class TimerSettings extends Component {
             }         
                 
             <RadioOptions>
-              <FormRadio onChange={handleTypeChange} checked={typeDate} type="radio" name="type-date" value="type-date" label="End Date" />
+              <FormRadio onChange={handleTypeChange} checked={typeDate} type="radio" name="type-date" value="type-date" label="Go Live" />
               <FormRadio onChange={handleTypeChange} checked={typeDays} type="radio" name="type-days" value="type-days" label="Dev Days" />
             </RadioOptions>
           </FormItem>

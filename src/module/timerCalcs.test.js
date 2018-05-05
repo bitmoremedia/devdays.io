@@ -1,4 +1,4 @@
-import { getTimesUntil, getDayPatternToDayIndexes } from './timerCalcs'
+import { getTimesUntil, getDayPatternToDayIndexes, getEndDateFromDevDays } from './timerCalcs'
 
 describe('getTimesUntil: 2018-03-05 to 2018-03-08 (mon-sun)', () => {
   const output = getTimesUntil({
@@ -103,5 +103,38 @@ describe('dayPatternToDayIndexes', () => {
         devDayPattern: 'sun-sat',
       }),
     ).toEqual(undefined)
+  })
+})
+
+describe('getEndDateFromDevDays: 2018-03-05 with devDays 3 (mon-sun)', () => {  
+  const endDate = getEndDateFromDevDays({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    devDays: 3,
+    devDayPattern: 'mon-sun',
+  })
+  test('go live to be 2018-03-08', () => {
+    expect(endDate).toEqual('2018-03-08')
+  })
+})
+
+describe('getEndDateFromDevDays: 2018-03-05 with devDays 3 (mon-tue)', () => {
+  const endDate = getEndDateFromDevDays({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    devDays: 3,
+    devDayPattern: 'mon-tue',
+  })
+  test('go live to be 2018-03-13', () => {
+    expect(endDate).toEqual('2018-03-13')
+  })
+})
+
+describe('getEndDateFromDevDays: 2018-03-05 with devDays 8 (mon-fri)', () => {
+  const endDate = getEndDateFromDevDays({
+    currentDateTime: new Date('2018-03-05').getTime(),
+    devDays: 8,
+    devDayPattern: 'mon-fri',
+  })
+  test('go live to be 2018-03-15', () => {
+    expect(endDate).toEqual('2018-03-15')
   })
 })
