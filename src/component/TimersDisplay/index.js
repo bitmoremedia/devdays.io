@@ -95,7 +95,7 @@ class TimersDisplay extends Component {
   }
 
   renderTimesUp = () => {
-    return <OutOfTimeContainer>Out of time!!!</OutOfTimeContainer>
+    return <OutOfTimeContainer>Times up!!! Hope the release went well....</OutOfTimeContainer>
   }
 
   render() {

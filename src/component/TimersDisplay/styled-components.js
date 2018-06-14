@@ -7,6 +7,9 @@ const maxContentWidth = '1200px'
 export const OutOfTimeContainer = styled.div`
   color: ${textOnPrimary};
   font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export const TimersDisplayContainer = styled.div`
